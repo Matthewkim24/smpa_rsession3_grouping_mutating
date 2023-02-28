@@ -100,7 +100,9 @@ impeach %>%
 # against impeachment, this time show the combined MEAN percentage of college
 # grads (pct_bachelors) for districts that are Yes for impeachment vs. No
 
-
+impeach %>% 
+  group_by(for_impeachment) %>% 
+    summarise(mean(pct_bachelors)) 
     
 
 
@@ -116,7 +118,9 @@ impeach %>%
 # the vote that Donald Trump received for districts that are Yes for 
 # impeachment vs. No
 
-
+impeach %>% 
+  group_by(for_impeachment) %>% 
+    summarise(mean(trump_percent))
 
 
 
@@ -132,7 +136,11 @@ impeach %>%
 # then of those how many won their 2018 election by less than
 # 5 percentage points (margin_flag_2018) vs. more?
   
-  
+  impeach %>% 
+    group_by(for_impeachment) %>% 
+      filter(for_impeachment=="YES") %>% 
+      filter(margin_flag_2018=="5_points_or_less")
+      
 
 
 
