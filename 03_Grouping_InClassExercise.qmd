@@ -38,6 +38,10 @@ Questions - Write your code using grouping in the chunks below to help answer th
 
 ```{r}
 # 1) How many members in the dataset who are holdouts on impeachment (NO in for_impeachment) vs. supporters (YES)?
+impeach %>% 
+  filter(for_impeachment=="YES")
+impeach %>% 
+  filter(for_impeachment=="NO")
 
 
 
@@ -54,6 +58,14 @@ Questions - Write your code using grouping in the chunks below to help answer th
        # - those who are for or against impeachment
        # - districts above/below national GDP
 
+impeach %>% 
+  group_by(for_impeachment) %>% 
+    summarise(n())
+impeach %>% 
+  group_by(gdp_above_national) %>% 
+    summarise(n())
+  
+  
 
 
 
@@ -69,7 +81,10 @@ Questions - Write your code using grouping in the chunks below to help answer th
 # 3) Now do the same as #2, but this time instead of GDP look at above/below 
 # the national avg percent of college graduates (pct_bachelors_compared_to_national)
 
-
+impeach %>% 
+  group_by(pct_bachelors_compared_to_national) %>% 
+  summarise(n())
+  
 
 
 
@@ -86,6 +101,7 @@ Questions - Write your code using grouping in the chunks below to help answer th
 # grads (pct_bachelors) for districts that are Yes for impeachment vs. No
 
 
+    
 
 
 
